@@ -95,6 +95,25 @@ class UKF {
 
   // Sigma point spreading parameter
   double lambda_;
+
+  // weights as diagonal matrix
+  Eigen::MatrixXd wMat_;
+
+  // noise covariance matrix radar
+  Eigen::MatrixXd R_radar_;
+
+  // noise covariance matrix lidar
+  Eigen::MatrixXd R_lidar_;
+
+  // difference matrix to store Xsig_pred_-x_
+  Eigen::MatrixXd XD_;
+
+  // augmented sigma points
+  Eigen::MatrixXd Xsig_aug_;
+
+  void ComputeAugmentedSigmaPoints();
+
+  void NormalizeAngle(double& angle);
 };
 
 #endif  // UKF_H
